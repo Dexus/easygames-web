@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b111c">
+<meta name="description" content="Six classic board games. Play against Rust-powered NPCs directly in your browser, with difficulty from 1 to 10,000.">
+<title>Easygames · Boardroom</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<style>
+:root {color-scheme:dark;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#0b111c;color:#f2edda}
+* {box-sizing:border-box} body{margin:0;min-height:100dvh;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px max(20px,env(safe-area-inset-right));border-bottom:1px solid #283847}
+h1{margin:0;font-size:18px;letter-spacing:.09em}.mark{color:#52dbba} .sub{color:#9bb0b9;font-size:12px;margin:6px 0 0}
+button,a{color:inherit}button{font:inherit;background:#1b2634;border:1px solid #334756;border-radius:4px;padding:10px 14px;cursor:pointer}
+button:hover,button:focus-visible{border-color:#52dbba;color:#52dbba}
+main{flex:1;display:grid;place-items:center;padding:12px 8px}
+iframe{display:block;border:1px solid #263646;width:min(100%,calc((100dvh - 134px)*.5625));height:min(calc(100dvh - 134px),calc((100vw - 16px)*1.777778));min-height:320px;background:#0b111c;box-shadow:0 12px 70px #0004}
+footer{padding:8px 16px max(12px,env(safe-area-inset-bottom));color:#96aab3;font-size:11px;text-align:center}
+footer p{margin:4px}a{color:#52dbba;text-underline-offset:3px}details{max-width:680px;margin:8px auto}summary{cursor:pointer;color:#cbd9dc}
+@media(max-width:480px){header{padding:12px 16px}h1{font-size:16px}.sub{font-size:10px}button{font-size:11px;padding:9px}iframe{width:100%;height:calc((100vw - 16px)*1.777778)}main{padding:6px 8px}footer{font-size:10px}}
+:fullscreen{background:#0b111c}iframe:fullscreen{width:100vw;height:100dvh;border:0}
+</style>
+</head>
+<body>
+<header><div><h1><span class="mark">B /</span> EASYGAMES</h1><p class="sub">SIX CLASSICS. ONE TABLE.</p></div><button id="fullscreen" type="button">Full screen ↗</button></header>
+<main><iframe id="game" title="Boardroom — six playable board games" src="./game/index.html" allow="fullscreen; autoplay" allowfullscreen></iframe></main>
+<footer>
+<p>NPC play runs in your browser. No account or server needed.</p>
+<details><summary>How to play &amp; multiplayer</summary><p>Choose a game, set NPC difficulty from 1 to 10,000, then take a seat. Touch and mouse are supported.</p><p>Live private-room PvP requires an HTTPS Rust game server. Enter its address in the game menu. GitHub Pages hosts this web client; it does not host multiplayer matches.</p><p>Local games reset when this page reloads. If loading fails, use a current browser with WebGL enabled and reload.</p></details>
+<p><a href="https://github.com/Dexus/easygames-web" target="_blank" rel="noopener">Web build</a> · Defold + Rust WebAssembly</p>
+</footer>
+<script>
+document.getElementById('fullscreen').addEventListener('click',async()=>{try{await document.getElementById('game').requestFullscreen();}catch(_){document.getElementById('game').focus();}});
+</script>
+</body>
+</html>
